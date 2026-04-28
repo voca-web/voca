@@ -144,6 +144,12 @@ nav .fab[href="#contact"] {
   background-color: #7c3aed;
 }
 
+/* Developer Credit Styling */
+.confetti-text {
+  color: #dc2626; /* Vibrant crimson red */
+  font-weight: 500;
+}
+
 /* Screenshot Descriptions Global/Desktop Styles */
 .screenshot-desc {
   font-size: 1rem;
