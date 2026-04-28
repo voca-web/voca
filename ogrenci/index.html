@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voca Öğrenci Portalı</title>
+    <script>
+        function checkPassword() {
+            // Pick a fun word for your students like "apple" or "pencil"
+            const magicWord = "voca123";
+            const entry = document.getElementById("pw").value;
+
+            if (entry.toLowerCase() === magicWord) {
+                document.getElementById("gate").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            } else {
+                alert("Oops! Yanlış sihirli kelime. Tekrar dene!");
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn {
+            background: #7c3aed;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card" id="gate">
+        <h2>🔑 Hoşgeldin!</h2>
+        <p>Sihirli kelimeyi gir ve öğrenmeye başla:</p>
+        <input type="password" id="pw"
+            style="padding: 10px; width: 80%; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd;"><br>
+        <button class="btn" onclick="checkPassword()">Giriş Yap</button>
+    </div>
+
+    <div class="card" id="content">
+        <h1>📚 Ders Materyalleri</h1>
+        <hr>
+        <div style="text-align: left; margin-top: 20px;">
+            <h3>📖 Son Dersler</h3>
+            <ul>
+                <li><a href="materials/lesson1.pdf">Lesson 1: Vocabulary PDF</a></li>
+                <li><a href="materials/spot-the-difference.jpg">Spot the Difference Activity</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
