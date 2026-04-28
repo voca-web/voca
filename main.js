@@ -79,7 +79,7 @@ const translations = {
     feature3_title: 'Detaylı Gelişim Takibi',
     feature3_desc: 'Günlük gelişiminizi takip edin ve öğrenirken motive kalın.',
     here_to_help: 'Yardımcı olmaktan memnuniyet duyarız',
-    prefer_email: 'Doğrudan e-posta mı tercih edersiniz?',
+    prefer_email: 'Doğrudan e-posta ile iletişimi mi tercih edersiniz?',
     support_email: 'destek@voca.com.tr',
     nav_about: 'Voca Nedir?',
     nav_privacy: 'Gizlilik Politikası',
