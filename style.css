@@ -144,7 +144,19 @@ nav .fab[href="#contact"] {
   background-color: #7c3aed;
 }
 
-/* Developer Credit Styling */
+/* Footer Stack */
+.footer-credits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  padding-bottom: 1rem;
+}
+
+/* Developer Credit & Highlight Styling */
+.highlight-red,
 .confetti-text {
   color: #dc2626; /* Vibrant crimson red */
   font-weight: 500;
