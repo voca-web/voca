@@ -86,7 +86,7 @@ const translations = {
     nav_back_voca: 'Voca\'ya Geri Dön',
     instagram_message: 'Herhangi bir sorunuz varsa, lütfen bana dm gönderin',
     about_title: 'Voca Nedir?',
-    about_intro: 'Voca, öğrenmeye odaklanan bir yol arkadaşıdır. Günde sadece 10 dakika harcayarak İngilizcenizi kolayca geliştirebilirsiniz.',
+    about_intro: 'Voca, öğrenmeye odaklanan bir yol arkadaşınızdır. Günde sadece 10 dakika harcayarak İngilizcenizi kolayca geliştirebilirsiniz.',
     tour_step1_title: 'Voca\'ya Hoş Geldin!',
     tour_step1_desc: 'Seviyenize uygun alıştırmalarla İngilizce kelime bilginizi geliştirin.',
     tour_step2_title: 'Adım Adım Öğrenme',
