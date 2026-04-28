@@ -113,6 +113,14 @@ nav .fab[href="#contact"] {
   line-height: 1;
 }
 
+/* Privacy Policy Container Styles */
+.legal-container {
+  max-width: 800px;
+  line-height: 1.6;
+  padding: 40px;
+  margin: 0 auto;
+}
+
 /* Screenshot Descriptions Global/Desktop Styles */
 .screenshot-desc {
   font-size: 1rem;
