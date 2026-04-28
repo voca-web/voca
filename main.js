@@ -84,7 +84,7 @@ const translations = {
     nav_about: 'Voca Nedir?',
     nav_privacy: 'Gizlilik Politikası',
     nav_back_voca: 'Voca\'ya Geri Dön',
-    instagram_message: 'Herhangi bir sorunuz varsa, lütfen bana dm göndermekten çekinmeyin',
+    instagram_message: 'Herhangi bir sorunuz varsa, lütfen bana dm gönderin',
     about_title: 'Voca Nedir?',
     about_intro: 'Günde sadece 10 dakika harcayarak İngilizcenizi kolayca geliştirebilirsiniz. Voca, sadece öğrenmeye odaklanan sade bir yol arkadaşıdır.',
     tour_step1_title: 'Voca\'ya Hoş Geldin!',
