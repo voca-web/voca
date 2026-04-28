@@ -67,7 +67,7 @@ const translations = {
     headline: '<span class="text-[var(--color-primary)]">Voca</span> ile İngilizcenizi Geliştirin',
     hero_subheadline: 'İngilizce serüveninizde yanınızdayız. Karmaşadan uzak, sadece öğrenmeye odaklanan sade ve etkili bir deneyim için Voca\'yı indirin.',
     beta_instructions: 'Voca şu anda kapalı test aşamasındadır. Beta grubuna katılmak ve öğrenmeye başlamak için, Google Play hesabınıza bağlı e-posta adresinizi <a href="mailto:closedbeta@voca.com.tr" class="text-[var(--color-primary)] font-bold hover:underline">closedbeta@voca.com.tr</a> adresine gönderebilirsiniz.',
-    contact_support: 'Bizimle İletişime Geçin',
+    contact_support: 'İletişime Geçin',
     get_in_touch: 'Bize Ulaşın',
     now_available: 'Android\'de Yayında',
     key_features_header: 'Voca Sizin İçin Neler Yapabilir?',
@@ -105,7 +105,7 @@ const translations = {
 
 function setLanguage(lang) {
   localStorage.setItem('voca_lang', lang);
-  
+
   if (lang === 'EN') {
     langEnBtns.forEach(btn => {
       btn.classList.add('text-[var(--color-primary)]', 'font-bold');
@@ -125,7 +125,7 @@ function setLanguage(lang) {
       btn.classList.add('text-slate-400', 'hover:text-slate-600');
     });
   }
-  
+
   // Apply Translations
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
