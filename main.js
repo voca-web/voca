@@ -46,7 +46,7 @@ const translations = {
     nav_back_voca: 'Go back to Voca',
     instagram_message: 'If you have any questions, please feel free to send me a dm',
     about_title: 'What is Voca?',
-    about_intro: 'Improve your English easily by spending just 10 minutes a day. Voca is a simple companion focused solely on learning.',
+    about_intro: 'Voca is a simple companion focused solely on learning. Improve your English easily by spending just 10 minutes a day.',
     tour_step1_title: 'Welcome to Voca',
     tour_step1_desc: 'Master English vocabulary through immersive, level-based practice.',
     tour_step2_title: 'Bite-Sized Learning',
