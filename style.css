@@ -160,5 +160,25 @@ nav .fab[href="#contact"] {
     padding-left: 0 !important;
     width: 100% !important;
   }
+
+  /* 4. Voca Screenshots Mobile Carousel */
+  .voca-screenshots-carousel {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 1rem !important;
+    padding-bottom: 1rem !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  .voca-screenshots-carousel::-webkit-scrollbar {
+    display: none !important;
+  }
+  .voca-screenshots-carousel > div {
+    flex-shrink: 0 !important;
+    width: 85% !important;
+    scroll-snap-align: center !important;
+    border-radius: 1rem !important;
+  }
 }
 
