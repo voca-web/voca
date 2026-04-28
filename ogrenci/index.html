@@ -4,75 +4,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voca Öğrenci Portalı</title>
-    <script>
-        function checkPassword() {
-            // Pick a fun word for your students like "apple" or "pencil"
-            const magicWord = "voca123";
-            const entry = document.getElementById("pw").value;
-
-            if (entry.toLowerCase() === magicWord) {
-                document.getElementById("gate").style.display = "none";
-                document.getElementById("content").style.display = "block";
-            } else {
-                alert("Oops! Yanlış sihirli kelime. Tekrar dene!");
-            }
-        }
-    </script>
+    <title>Voca Öğrenci Girişi</title>
     <style>
         body {
-            font-family: sans-serif;
-            background: #f3f4f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9fafb;
             display: flex;
+            align-items: center;
             justify-content: center;
-            padding: 20px;
+            height: 100vh;
+            margin: 0;
         }
 
-        .card {
+        .lock-card {
             background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            text-align: center;
             width: 100%;
+            max-width: 350px;
+        }
+
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            box-sizing: border-box;
+            font-size: 16px;
             text-align: center;
         }
 
-        .btn {
+        button {
+            width: 100%;
+            padding: 12px;
             background: #7c3aed;
             color: white;
-            padding: 10px 20px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
+            font-weight: bold;
             cursor: pointer;
+            transition: 0.2s;
         }
 
-        #content {
+        button:hover {
+            background: #6d28d9;
+            transform: translateY(-2px);
+        }
+
+        .error {
+            color: #ef4444;
+            font-size: 14px;
+            margin-top: 10px;
             display: none;
         }
     </style>
 </head>
 
 <body>
-    <div class="card" id="gate">
-        <h2>🔑 Hoşgeldin!</h2>
-        <p>Sihirli kelimeyi gir ve öğrenmeye başla:</p>
-        <input type="password" id="pw"
-            style="padding: 10px; width: 80%; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd;"><br>
-        <button class="btn" onclick="checkPassword()">Giriş Yap</button>
+
+    <div class="lock-card">
+        <div class="icon">🔒</div>
+        <h2 style="margin:0; color:#111827;">Öğrenci Portalı</h2>
+        <p style="color:#6b7280; font-size: 14px;">Lütfen size verilen giriş şifresini girin.</p>
+
+        <input type="password" id="studentPass" placeholder="Şifre" onkeypress="if(event.key === 'Enter') login()">
+        <button onclick="login()">Giriş Yap</button>
+        <p id="errorMsg" class="error">Üzgünüm, şifre hatalı!</p>
     </div>
 
-    <div class="card" id="content">
-        <h1>📚 Ders Materyalleri</h1>
-        <hr>
-        <div style="text-align: left; margin-top: 20px;">
-            <h3>📖 Son Dersler</h3>
-            <ul>
-                <li><a href="materials/lesson1.pdf">Lesson 1: Vocabulary PDF</a></li>
-                <li><a href="materials/spot-the-difference.jpg">Spot the Difference Activity</a></li>
-            </ul>
-        </div>
-    </div>
+    <script>
+        function login() {
+            const pass = document.getElementById('studentPass').value.trim();
+            if (!pass) return;
+
+            // This is the trick: We try to go to the folder named EXACTLY like the password.
+            // If the folder doesn't exist, the user gets a 404 (handled by Cloudflare).
+            window.location.href = `./${pass}/index.html`;
+        }
+    </script>
+
 </body>
 
 </html>
