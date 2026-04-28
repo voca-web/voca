@@ -113,6 +113,16 @@ nav .fab[href="#contact"] {
   line-height: 1;
 }
 
+/* Screenshot Descriptions Global/Desktop Styles */
+.screenshot-desc {
+  font-size: 1rem;
+  color: #4b5563;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.625;
+}
+
 /* Master Mobile Optimizations (Max Width: 639px) */
 @media (max-width: 639px) {
   /* 1. Header & Toggle Fix */
@@ -179,6 +189,13 @@ nav .fab[href="#contact"] {
     width: 85% !important;
     scroll-snap-align: center !important;
     border-radius: 1rem !important;
+  }
+  
+  /* Screenshot Descriptions Mobile Styles */
+  .screenshot-desc {
+    font-size: 0.9rem !important;
+    margin-top: 0.5rem !important;
+    padding: 0 1.5rem !important;
   }
 }
 
