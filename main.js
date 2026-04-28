@@ -70,7 +70,7 @@ const translations = {
     get_in_touch: 'Bize Ulaşın',
     now_available: 'Android\'de Yayında',
     key_features_header: 'Voca Sizin İçin Neler Yapabilir?',
-    features_subheadline: 'Günde sadece 10 dakika harcayarak İngilizcenizi kolayca geliştirebilirsiniz.',
+    features_subheadline: 'Dil öğrenimini etkili ve eğlenceli bir deneyime dönüştürmek için tasarlanmış özelliklerimizi keşfedin.',
     feature1_title: 'Kapsamlı Kelime Kütüphanesi',
     feature1_desc: 'Seviyenize uygun binlerce temel İngilizce kelimeye erişin.',
     feature2_title: 'Kalıcı ve Etkili Öğrenim',
