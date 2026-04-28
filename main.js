@@ -65,7 +65,7 @@ const translations = {
     brand_title: 'Voca: English Vocabulary',
     brand_title_short: 'Voca',
     headline: '<span class="text-[var(--color-primary)]">Voca</span> ile İngilizcenizi Geliştirin',
-    hero_subheadline: 'İngilizce öğrenenler için özenle tasarlanmış, motive edici bir deneyim için hemen Voca\yı indirin.',
+    hero_subheadline: 'İngilizce öğrenenler için özenle tasarlanmış, motive edici bir deneyim için hemen Voca’yı indirin.',
     beta_instructions: 'Voca şu anda kapalı test aşamasındadır. Beta grubuna katılmak ve öğrenmeye başlamak için, Google Play hesabınıza bağlı e-posta adresinizi <a href="mailto:closedbeta@voca.com.tr" class="text-[var(--color-primary)] font-bold hover:underline">closedbeta@voca.com.tr</a> adresine gönderebilirsiniz.',
     contact_support: 'İletişime Geçin',
     get_in_touch: 'Bize Ulaşın',
