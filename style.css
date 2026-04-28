@@ -119,6 +119,9 @@ nav .fab[href="#contact"] {
   nav .pointer-events-auto {
     gap: 1.5rem !important;
     align-items: center !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    box-sizing: border-box !important;
   }
   
   /* Prevent Logo from being squished */
@@ -134,10 +137,11 @@ nav .fab[href="#contact"] {
 
   /* Shrink 'Contact Support' button size */
   nav .fab[href="#contact"] {
-    padding: 6px 12px !important;
-    font-size: 12px !important;
+    padding: 6px 8px !important;
+    font-size: 11px !important;
     min-height: 32px !important;
     flex-shrink: 0 !important;
+    letter-spacing: -0.01em !important;
   }
 
   /* 2. Headline Spacing Fix: Reduce H1 line-height */
