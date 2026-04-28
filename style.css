@@ -121,6 +121,23 @@ nav .fab[href="#contact"] {
   margin: 0 auto;
 }
 
+/* Back to Voca Button */
+.back-voca-btn {
+  background-color: #8b5cf6;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.back-voca-btn:hover {
+  background-color: #7c3aed;
+}
+
 /* Screenshot Descriptions Global/Desktop Styles */
 .screenshot-desc {
   font-size: 1rem;
