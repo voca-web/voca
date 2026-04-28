@@ -1,248 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Voca: English Vocabulary</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <meta name="description" content="An encouraging way to learn English vocabulary, built for English students." />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-[var(--color-background)] text-[var(--color-on-surface)] antialiased relative selection:bg-[var(--color-primary-light)] selection:text-[var(--color-primary-dark)] overflow-x-hidden">
-    
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300 p-4 md:p-6 pointer-events-none" id="navbar">
-      <div class="pointer-events-auto max-w-7xl mx-auto px-6 py-4 flex justify-between items-center bg-white/70 backdrop-blur-md rounded-3xl shadow-sm transition-all duration-300 border border-white/20">
-        <a href="#" class="text-2xl font-bold tracking-tight text-black flex items-center gap-3">
-          <img src="/logo.png" alt="Voca Logo" class="h-10 w-auto object-contain drop-shadow-sm" />
-          <span data-i18n="brand_title_short" class="md:hidden">Voca</span>
-          <span data-i18n="brand_title" class="hidden md:inline">Voca: English Vocabulary</span>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voca: English Vocabulary</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta name="description" content="An encouraging way to learn English vocabulary, built for English students." />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body
+  class="bg-[var(--color-background)] text-[var(--color-on-surface)] antialiased relative selection:bg-[var(--color-primary-light)] selection:text-[var(--color-primary-dark)] overflow-x-hidden">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 transition-all duration-300 p-4 md:p-6 pointer-events-none" id="navbar">
+    <div
+      class="pointer-events-auto max-w-7xl mx-auto px-6 py-4 flex justify-between items-center bg-white/70 backdrop-blur-md rounded-3xl shadow-sm transition-all duration-300 border border-white/20">
+      <a href="#" class="text-2xl font-bold tracking-tight text-black flex items-center gap-3">
+        <img src="/logo.png" alt="Voca Logo" class="h-10 w-auto object-contain drop-shadow-sm" />
+        <span data-i18n="brand_title_short" class="md:hidden">Voca</span>
+        <span data-i18n="brand_title" class="hidden md:inline">Voca: English Vocabulary</span>
+      </a>
+      <div class="flex items-center gap-4 md:gap-6">
+        <!-- About Link -->
+        <a href="#about" data-i18n="nav_about"
+          class="text-sm font-medium text-slate-600 hover:text-[var(--color-primary)] transition-colors hidden md:block">What
+          is Voca?</a>
+        <!-- Language Toggle -->
+        <div class="flex items-center gap-1.5 text-sm font-medium">
+          <button
+            class="lang-btn lang-en text-[var(--color-primary)] font-bold transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">EN</button>
+          <span class="text-slate-300">|</span>
+          <button
+            class="lang-btn lang-tr text-slate-400 hover:text-slate-600 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">TR</button>
+        </div>
+        <a href="#contact" data-i18n="contact_support"
+          class="fab bg-[var(--color-primary)] text-white px-5 py-2.5 md:px-6 md:py-3 rounded-full font-medium hover:bg-[var(--color-primary-dark)] transition-colors inline-flex items-center gap-2 text-sm md:text-base min-h-[44px]">
+          Contact Support
         </a>
-        <div class="flex items-center gap-4 md:gap-6">
-          <!-- About Link -->
-          <a href="#about" data-i18n="nav_about" class="text-sm font-medium text-slate-600 hover:text-[var(--color-primary)] transition-colors hidden md:block">What is Voca?</a>
-          <!-- Language Toggle -->
-          <div class="flex items-center gap-1.5 text-sm font-medium">
-            <button class="lang-btn lang-en text-[var(--color-primary)] font-bold transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">EN</button>
-            <span class="text-slate-300">|</span>
-            <button class="lang-btn lang-tr text-slate-400 hover:text-slate-600 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">TR</button>
-          </div>
-          <a href="#contact" data-i18n="contact_support" class="fab bg-[var(--color-primary)] text-white px-5 py-2.5 md:px-6 md:py-3 rounded-full font-medium hover:bg-[var(--color-primary-dark)] transition-colors inline-flex items-center gap-2 text-sm md:text-base min-h-[44px]">
-            Contact Support
+      </div>
+    </div>
+  </nav>
+
+  <main class="overflow-x-hidden">
+    <!-- Hero Section -->
+    <section
+      class="min-h-screen pt-40 pb-20 px-6 flex flex-col md:flex-row items-center justify-center max-w-7xl mx-auto gap-16 lg:gap-24 relative overflow-hidden">
+      <!-- Background decorative elements -->
+      <div
+        class="absolute top-1/4 -left-32 w-[30rem] h-[30rem] bg-[var(--color-primary-light)] rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-10">
+      </div>
+      <div
+        class="absolute top-1/3 -right-32 w-[30rem] h-[30rem] bg-[var(--color-secondary-light)] rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-10">
+      </div>
+
+      <div class="flex-1 text-center md:text-left z-10 flex flex-col items-center md:items-start">
+        <div data-i18n="now_available"
+          class="inline-block px-4 py-1.5 rounded-full bg-[var(--color-primary-light)]/50 text-[var(--color-primary-dark)] font-medium text-sm mb-6 border border-[var(--color-primary-light)]">
+          Now available on Android
+        </div>
+        <h1 data-i18n="headline"
+          class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-tight mb-8 tracking-tight reveal-up">
+          Master English<br />Vocabulary with <span class="text-[var(--color-primary)]">Voca.</span>
+        </h1>
+        <p data-i18n="hero_subheadline"
+          class="text-xl md:text-2xl text-slate-600 mb-12 max-w-2xl font-light reveal-up delay-100">
+          An encouraging way to learn, built specifically for English learners.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center w-full px-6 md:px-0 reveal-up delay-200">
+          <a href="https://play.google.com/store/apps/details?id=com.can.voca" target="_blank" rel="noopener noreferrer"
+            class="hover:-translate-y-1 transition-all duration-300 block hover:drop-shadow-[0_10px_20px_var(--color-primary)] min-h-[44px]">
+            <img src="/google-play-badge.svg" alt="Get it on Google Play" class="h-[68px] w-auto drop-shadow-md" />
           </a>
         </div>
+        <p data-i18n="beta_instructions"
+          class="mt-4 text-sm text-slate-600 text-center md:text-left max-w-md px-6 md:px-0 reveal-up delay-200">
+          Voca is currently in its closed testing phase. To join the beta and start learning, please send an email to <a
+            href="mailto:closedbeta@voca.com.tr"
+            class="text-[var(--color-primary)] font-bold hover:underline min-h-[44px] inline-flex items-center">closedbeta@voca.com.tr</a>
+          with the email address associated with your Google Play account.
+        </p>
       </div>
-    </nav>
 
-    <main class="overflow-x-hidden">
-      <!-- Hero Section -->
-      <section class="min-h-screen pt-40 pb-20 px-6 flex flex-col md:flex-row items-center justify-center max-w-7xl mx-auto gap-16 lg:gap-24 relative overflow-hidden">
-        <!-- Background decorative elements -->
-        <div class="absolute top-1/4 -left-32 w-[30rem] h-[30rem] bg-[var(--color-primary-light)] rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-10"></div>
-        <div class="absolute top-1/3 -right-32 w-[30rem] h-[30rem] bg-[var(--color-secondary-light)] rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-10"></div>
-        
-        <div class="flex-1 text-center md:text-left z-10 flex flex-col items-center md:items-start">
-          <div data-i18n="now_available" class="inline-block px-4 py-1.5 rounded-full bg-[var(--color-primary-light)]/50 text-[var(--color-primary-dark)] font-medium text-sm mb-6 border border-[var(--color-primary-light)]">
-            Now available on Android
-          </div>
-          <h1 data-i18n="headline" class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-tight mb-8 tracking-tight reveal-up">
-            Master English<br/>Vocabulary with <span class="text-[var(--color-primary)]">Voca.</span>
-          </h1>
-          <p data-i18n="hero_subheadline" class="text-xl md:text-2xl text-slate-600 mb-12 max-w-2xl font-light reveal-up delay-100">
-            An encouraging way to learn, built specifically for English students.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center w-full px-6 md:px-0 reveal-up delay-200">
-            <a href="https://play.google.com/store/apps/details?id=com.can.voca" target="_blank" rel="noopener noreferrer" class="hover:-translate-y-1 transition-all duration-300 block hover:drop-shadow-[0_10px_20px_var(--color-primary)] min-h-[44px]">
-              <img src="/google-play-badge.svg" alt="Get it on Google Play" class="h-[68px] w-auto drop-shadow-md" />
-            </a>
-          </div>
-          <p data-i18n="beta_instructions" class="mt-4 text-sm text-slate-600 text-center md:text-left max-w-md px-6 md:px-0 reveal-up delay-200">
-            Voca is currently in its closed testing phase. To join the beta and start learning, please send an email to <a href="mailto:closedbeta@voca.com.tr" class="text-[var(--color-primary)] font-bold hover:underline min-h-[44px] inline-flex items-center">closedbeta@voca.com.tr</a> with the email address associated with your Google Play account.
-          </p>
-        </div>
-        
-        <div class="flex-1 flex justify-center z-10 w-full relative">
-          <!-- App Screenshot -->
-          <div class="reveal-up delay-300 w-full flex justify-center">
-            <div class="w-[80%] sm:w-[340px] max-w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-              <img data-i18n="img_hero" src="/hero-app.jpg" alt="Voca App Learning Screen" class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
-            </div>
+      <div class="flex-1 flex justify-center z-10 w-full relative">
+        <!-- App Screenshot -->
+        <div class="reveal-up delay-300 w-full flex justify-center">
+          <div
+            class="w-[80%] sm:w-[340px] max-w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
+            <img data-i18n="img_hero" src="/hero-app.jpg" alt="Voca App Learning Screen"
+              class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- What is Voca Section -->
-      <section id="about" class="py-32 px-6 bg-white relative z-10 rounded-t-[4rem] shadow-[0_-20px_50px_-20px_rgba(0,0,0,0.05)] border-t border-slate-100">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-20">
-            <h2 data-i18n="about_title" class="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 text-black tracking-tight">What is Voca?</h2>
-            <p data-i18n="about_intro" class="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">Improve your English easily by spending just 10 minutes a day. Voca is a simple companion focused solely on learning.</p>
+    <!-- What is Voca Section -->
+    <section id="about"
+      class="py-32 px-6 bg-white relative z-10 rounded-t-[4rem] shadow-[0_-20px_50px_-20px_rgba(0,0,0,0.05)] border-t border-slate-100">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+          <h2 data-i18n="about_title"
+            class="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 text-black tracking-tight">What is Voca?</h2>
+          <p data-i18n="about_intro" class="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">Improve
+            your English easily by spending just 10 minutes a day. Voca is a simple companion focused solely on
+            learning.</p>
+        </div>
+
+        <div
+          class="voca-screenshots-carousel grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 justify-items-center">
+          <!-- Step 1 -->
+          <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up">
+            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
+              <img data-i18n="img_tour1" src="/Screenshot_20260428_183018.png" alt="Voca Tour Step 1"
+                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
+            </div>
+            <h3 data-i18n="tour_step1_title" class="text-xl font-medium text-slate-800 text-center">Welcome to Voca</h3>
+            <p data-i18n="tour_step1_desc" class="screenshot-desc text-center">Master English vocabulary through
+              immersive, level-based practice.</p>
           </div>
-          
-          <div class="voca-screenshots-carousel grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 justify-items-center">
-            <!-- Step 1 -->
-            <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up">
-              <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-                <img data-i18n="img_tour1" src="/Screenshot_20260428_183018.png" alt="Voca Tour Step 1" class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
-              </div>
-              <h3 data-i18n="tour_step1_title" class="text-xl font-medium text-slate-800 text-center">Welcome to Voca</h3>
-              <p data-i18n="tour_step1_desc" class="screenshot-desc text-center">Master English vocabulary through immersive, level-based practice.</p>
+
+          <!-- Step 2 -->
+          <div
+            class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 md:translate-y-12 reveal-up delay-100">
+            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
+              <img data-i18n="img_tour2" src="/Screenshot_20260428_183026.png" alt="Voca Tour Step 2"
+                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
             </div>
-            
-            <!-- Step 2 -->
-            <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 md:translate-y-12 reveal-up delay-100">
-              <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-                <img data-i18n="img_tour2" src="/Screenshot_20260428_183026.png" alt="Voca Tour Step 2" class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
-              </div>
-              <h3 data-i18n="tour_step2_title" class="text-xl font-medium text-slate-800 text-center">Bite-Sized Learning</h3>
-              <p data-i18n="tour_step2_desc" class="screenshot-desc text-center">Learn vocabulary in perfectly sized, manageable chunks.</p>
+            <h3 data-i18n="tour_step2_title" class="text-xl font-medium text-slate-800 text-center">Bite-Sized Learning
+            </h3>
+            <p data-i18n="tour_step2_desc" class="screenshot-desc text-center">Learn vocabulary in perfectly sized,
+              manageable chunks.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up delay-200">
+            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
+              <img data-i18n="img_tour3" src="/Screenshot_20260428_183031.png" alt="Voca Tour Step 3"
+                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
             </div>
-            
-            <!-- Step 3 -->
-            <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up delay-200">
-              <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-                <img data-i18n="img_tour3" src="/Screenshot_20260428_183031.png" alt="Voca Tour Step 3" class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
-              </div>
-              <h3 data-i18n="tour_step3_title" class="text-xl font-medium text-slate-800 text-center">Swipe to Learn</h3>
-              <p data-i18n="tour_step3_desc" class="screenshot-desc text-center">Navigate through categories and favorite words for later review.</p>
-            </div>
+            <h3 data-i18n="tour_step3_title" class="text-xl font-medium text-slate-800 text-center">Swipe to Learn</h3>
+            <p data-i18n="tour_step3_desc" class="screenshot-desc text-center">Navigate through categories and favorite
+              words for later review.</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- App Gallery -->
-      <section class="py-32 px-6 bg-slate-50/50 relative z-10 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-20">
-            <h2 data-i18n="key_features_header" class="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 text-slate-800 tracking-tight">See Voca in Action</h2>
-            <p data-i18n="features_subheadline" class="text-xl text-slate-600 max-w-2xl mx-auto font-light">Explore features designed to make language learning intuitive, effective, and beautiful.</p>
-          </div>
-          
-          <div class="voca-screenshots-carousel grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 justify-items-center space-y-8 md:space-y-0">
-            <!-- Screenshot 1 -->
-            <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up">
-              <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-                <img data-i18n="img_feature1" src="/feature1.jpg" alt="Voca App Feature 1" class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
-              </div>
-              <div class="text-center px-2">
-                <h3 data-i18n="feature1_title" class="text-xl font-medium text-slate-800 mb-2">Comprehensive Word Library</h3>
-                <p data-i18n="feature1_desc" class="screenshot-desc text-center">Access thousands of essential English words tailored for your level.</p>
-              </div>
-            </div>
-            
-            <!-- Screenshot 2 -->
-            <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 md:translate-y-12 reveal-up delay-100">
-              <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-                <img data-i18n="img_feature2" src="/feature2.jpg" alt="Voca App Feature 2" class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
-              </div>
-              <div class="text-center px-2">
-                <h3 data-i18n="feature2_title" class="text-xl font-medium text-slate-800 mb-2">Effective and Permanent Learning</h3>
-                <p data-i18n="feature2_desc" class="screenshot-desc text-center">Don't just memorize words, truly learn them. Our memory-based system ensures words stick in your mind.</p>
-              </div>
-            </div>
-            
-            <!-- Screenshot 3 -->
-            <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up delay-200">
-              <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-                <img data-i18n="img_feature3" src="/feature3.jpg" alt="Voca App Feature 3" class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
-              </div>
-              <div class="text-center px-2">
-                <h3 data-i18n="feature3_title" class="text-xl font-medium text-slate-800 mb-2">Detailed Progress Tracking</h3>
-                <p data-i18n="feature3_desc" class="screenshot-desc text-center">Track your progress daily and stay motivated as you learn.</p>
-              </div>
-            </div>
-          </div>
+    <!-- App Gallery -->
+    <section class="py-32 px-6 bg-slate-50/50 relative z-10 border-t border-slate-100">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+          <h2 data-i18n="key_features_header"
+            class="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 text-slate-800 tracking-tight">See Voca in Action
+          </h2>
+          <p data-i18n="features_subheadline" class="text-xl text-slate-600 max-w-2xl mx-auto font-light">Explore
+            features designed to make language learning intuitive, effective, and beautiful.</p>
         </div>
-      </section>
 
-      <!-- Contact Section -->
-      <section id="contact" class="py-32 px-6 bg-gradient-to-b from-white to-[var(--color-primary-light)]/20 relative z-0">
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-          <div data-i18n="here_to_help" class="inline-block px-4 py-1.5 rounded-full bg-white text-[var(--color-primary-dark)] font-medium text-sm mb-6 border border-slate-200 shadow-sm">
-            We're here to help
-          </div>
-          <h2 data-i18n="get_in_touch" class="text-4xl md:text-5xl font-medium mb-12 text-slate-800 tracking-tight">Get in Touch</h2>
-          
-          <div class="bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-4 pb-12 md:p-8 md:pb-16 shadow-2xl mb-12 relative overflow-hidden border border-white reveal-up">
-            <!-- Decorative corner blobs -->
-            <div class="absolute -top-12 -right-12 w-32 h-32 bg-[var(--color-primary)] rounded-full mix-blend-multiply opacity-20 filter blur-2xl"></div>
-            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-[var(--color-secondary)] rounded-full mix-blend-multiply opacity-20 filter blur-2xl"></div>
-            
-            <!-- Zoho Form iframe Container -->
-            <div class="w-full h-[800px] flex items-start justify-center bg-[var(--color-primary)] rounded-[2rem] relative overflow-hidden shadow-sm">
-               <!-- Embedded Zoho form -->
-               <iframe aria-label='Contact with feedback' class="rounded-[2rem]" frameborder="0" scrolling="no" style="height:100%;width:100%;border:none;position:relative;z-index:10;overflow:hidden;" src='https://forms.zohopublic.eu/supportvo1/form/Contactwithfeedback/formperma/C8nmFs9eFol4hMl717WpB7CIz2FWRMbnrJDI_6J403E' onload="document.getElementById('iframe-loading').style.display='none';"></iframe>
-               
-               <!-- Footer Blanking Plate -->
-               <div class="absolute bottom-0 left-0 w-full h-[50px] bg-[var(--color-primary)] z-20 pointer-events-none rounded-b-[2rem]"></div>
-               
-               <!-- Fallback / Loading -->
-               <div id="iframe-loading" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-slate-500 z-0 bg-slate-50 text-center">
-                 <div class="w-10 h-10 border-4 border-[var(--color-primary-light)] border-t-[var(--color-primary)] rounded-full animate-spin mb-4"></div>
-                 <p class="font-medium text-slate-800 mb-2">Loading support form...</p>
-                 <p class="text-sm text-slate-500">If the form doesn't load, contact us at <a href="mailto:support@voca.com.tr" class="text-[var(--color-primary)] hover:underline">support@voca.com.tr</a></p>
-               </div>
+        <div
+          class="voca-screenshots-carousel grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 justify-items-center space-y-8 md:space-y-0">
+          <!-- Screenshot 1 -->
+          <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up">
+            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
+              <img data-i18n="img_feature1" src="/feature1.jpg" alt="Voca App Feature 1"
+                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
+            </div>
+            <div class="text-center px-2">
+              <h3 data-i18n="feature1_title" class="text-xl font-medium text-slate-800 mb-2">Comprehensive Word Library
+              </h3>
+              <p data-i18n="feature1_desc" class="screenshot-desc text-center">Access thousands of essential English
+                words tailored for your level.</p>
             </div>
           </div>
-          
-          <div class="bg-white inline-flex flex-col sm:flex-row items-center gap-4 px-8 py-6 rounded-3xl shadow-sm border border-slate-100">
-            <div class="w-12 h-12 bg-[var(--color-primary-light)]/50 rounded-full flex items-center justify-center text-[var(--color-primary-dark)]">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
+
+          <!-- Screenshot 2 -->
+          <div
+            class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 md:translate-y-12 reveal-up delay-100">
+            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
+              <img data-i18n="img_feature2" src="/feature2.jpg" alt="Voca App Feature 2"
+                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
             </div>
-            <div class="text-left">
-              <p data-i18n="prefer_email" class="text-sm text-slate-500 font-medium mb-1">Prefer direct email?</p>
-              <a data-i18n="support_email" href="mailto:support@voca.com.tr" class="text-xl text-[var(--color-primary-dark)] font-bold hover:underline">support@voca.com.tr</a>
+            <div class="text-center px-2">
+              <h3 data-i18n="feature2_title" class="text-xl font-medium text-slate-800 mb-2">Effective and Permanent
+                Learning</h3>
+              <p data-i18n="feature2_desc" class="screenshot-desc text-center">Don't just memorize words, truly learn
+                them. Our memory-based system ensures words stick in your mind.</p>
+            </div>
+          </div>
+
+          <!-- Screenshot 3 -->
+          <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up delay-200">
+            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
+              <img data-i18n="img_feature3" src="/feature3.jpg" alt="Voca App Feature 3"
+                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
+            </div>
+            <div class="text-center px-2">
+              <h3 data-i18n="feature3_title" class="text-xl font-medium text-slate-800 mb-2">Detailed Progress Tracking
+              </h3>
+              <p data-i18n="feature3_desc" class="screenshot-desc text-center">Track your progress daily and stay
+                motivated as you learn.</p>
             </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <div class="instagram-contact">
-      <p data-i18n="instagram_message">If you have any questions, please feel free to send me a dm</p>
-      <a href="https://www.instagram.com/seyficandikbas/" class="instagram-btn" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.036 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
-        </svg>
-        @seyficandikbas
+    <!-- Contact Section -->
+    <section id="contact"
+      class="py-32 px-6 bg-gradient-to-b from-white to-[var(--color-primary-light)]/20 relative z-0">
+      <div class="max-w-4xl mx-auto text-center relative z-10">
+        <div data-i18n="here_to_help"
+          class="inline-block px-4 py-1.5 rounded-full bg-white text-[var(--color-primary-dark)] font-medium text-sm mb-6 border border-slate-200 shadow-sm">
+          We're here to help
+        </div>
+        <h2 data-i18n="get_in_touch" class="text-4xl md:text-5xl font-medium mb-12 text-slate-800 tracking-tight">Get in
+          Touch</h2>
+
+        <div
+          class="bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-4 pb-12 md:p-8 md:pb-16 shadow-2xl mb-12 relative overflow-hidden border border-white reveal-up">
+          <!-- Decorative corner blobs -->
+          <div
+            class="absolute -top-12 -right-12 w-32 h-32 bg-[var(--color-primary)] rounded-full mix-blend-multiply opacity-20 filter blur-2xl">
+          </div>
+          <div
+            class="absolute -bottom-12 -left-12 w-32 h-32 bg-[var(--color-secondary)] rounded-full mix-blend-multiply opacity-20 filter blur-2xl">
+          </div>
+
+          <!-- Zoho Form iframe Container -->
+          <div
+            class="w-full h-[800px] flex items-start justify-center bg-[var(--color-primary)] rounded-[2rem] relative overflow-hidden shadow-sm">
+            <!-- Embedded Zoho form -->
+            <iframe aria-label='Contact with feedback' class="rounded-[2rem]" frameborder="0" scrolling="no"
+              style="height:100%;width:100%;border:none;position:relative;z-index:10;overflow:hidden;"
+              src='https://forms.zohopublic.eu/supportvo1/form/Contactwithfeedback/formperma/C8nmFs9eFol4hMl717WpB7CIz2FWRMbnrJDI_6J403E'
+              onload="document.getElementById('iframe-loading').style.display='none';"></iframe>
+
+            <!-- Footer Blanking Plate -->
+            <div
+              class="absolute bottom-0 left-0 w-full h-[50px] bg-[var(--color-primary)] z-20 pointer-events-none rounded-b-[2rem]">
+            </div>
+
+            <!-- Fallback / Loading -->
+            <div id="iframe-loading"
+              class="absolute inset-0 flex flex-col items-center justify-center p-6 text-slate-500 z-0 bg-slate-50 text-center">
+              <div
+                class="w-10 h-10 border-4 border-[var(--color-primary-light)] border-t-[var(--color-primary)] rounded-full animate-spin mb-4">
+              </div>
+              <p class="font-medium text-slate-800 mb-2">Loading support form...</p>
+              <p class="text-sm text-slate-500">If the form doesn't load, contact us at <a
+                  href="mailto:support@voca.com.tr"
+                  class="text-[var(--color-primary)] hover:underline">support@voca.com.tr</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-white inline-flex flex-col sm:flex-row items-center gap-4 px-8 py-6 rounded-3xl shadow-sm border border-slate-100">
+          <div
+            class="w-12 h-12 bg-[var(--color-primary-light)]/50 rounded-full flex items-center justify-center text-[var(--color-primary-dark)]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="text-left">
+            <p data-i18n="prefer_email" class="text-sm text-slate-500 font-medium mb-1">Prefer direct email?</p>
+            <a data-i18n="support_email" href="mailto:support@voca.com.tr"
+              class="text-xl text-[var(--color-primary-dark)] font-bold hover:underline">support@voca.com.tr</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="instagram-contact">
+    <p data-i18n="instagram_message">If you have any questions, please feel free to send me a dm</p>
+    <a href="https://www.instagram.com/seyficandikbas/" class="instagram-btn" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+        <path
+          d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.036 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+      </svg>
+      @seyficandikbas
+    </a>
+  </div>
+
+  <footer class="bg-white py-12 text-center text-slate-500 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+      <a href="#"
+        class="text-xl font-bold tracking-tight text-slate-300 flex items-center gap-2 mb-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+        <img src="/logo.png" alt="Voca Logo" class="h-8 w-auto object-contain drop-shadow-sm" />
+        Voca
       </a>
-    </div>
-
-    <footer class="bg-white py-12 text-center text-slate-500 border-t border-slate-100">
-      <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-        <a href="#" class="text-xl font-bold tracking-tight text-slate-300 flex items-center gap-2 mb-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-          <img src="/logo.png" alt="Voca Logo" class="h-8 w-auto object-contain drop-shadow-sm" />
-          Voca
-        </a>
-        <!-- Nav Links -->
-        <div class="flex items-center gap-6 mb-6">
-          <a href="#about" data-i18n="nav_about" class="text-sm font-medium text-slate-500 hover:text-[var(--color-primary)] transition-colors">What is Voca?</a>
-          <a href="/privacypolicy/" data-i18n="nav_privacy" class="text-sm font-medium text-slate-500 hover:text-[var(--color-primary)] transition-colors">Privacy Policy</a>
-        </div>
-        
-        <!-- Language Toggle -->
-        <div class="flex items-center gap-2 text-sm font-medium mb-6">
-          <button class="lang-btn lang-en text-[var(--color-primary)] font-bold transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">EN</button>
-          <span class="text-slate-300">|</span>
-          <button class="lang-btn lang-tr text-slate-400 hover:text-slate-600 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">TR</button>
-        </div>
-        
-        <div class="footer-credits">
-          <p>&copy; <span id="year"></span> Seyfi Can Dikbaş. All rights reserved.</p>
-          <p>Built for English <span class="highlight-red">lovers</span></p>
-          <p>developed by <span class="confetti-text">confetti</span></p>
-        </div>
+      <!-- Nav Links -->
+      <div class="flex items-center gap-6 mb-6">
+        <a href="#about" data-i18n="nav_about"
+          class="text-sm font-medium text-slate-500 hover:text-[var(--color-primary)] transition-colors">What is
+          Voca?</a>
+        <a href="/privacypolicy/" data-i18n="nav_privacy"
+          class="text-sm font-medium text-slate-500 hover:text-[var(--color-primary)] transition-colors">Privacy
+          Policy</a>
       </div>
-    </footer>
 
-    <script type="module" src="/main.js"></script>
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
+      <!-- Language Toggle -->
+      <div class="flex items-center gap-2 text-sm font-medium mb-6">
+        <button
+          class="lang-btn lang-en text-[var(--color-primary)] font-bold transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">EN</button>
+        <span class="text-slate-300">|</span>
+        <button
+          class="lang-btn lang-tr text-slate-400 hover:text-slate-600 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">TR</button>
+      </div>
+
+      <div class="footer-credits">
+        <p>&copy; <span id="year"></span> Seyfi Can Dikbaş. All rights reserved.</p>
+        <p>Built for English <span class="highlight-red">lovers</span></p>
+        <p>developed by <span class="confetti-text">confetti</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
 </html>
