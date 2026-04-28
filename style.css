@@ -28,6 +28,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Round Voca Logo Edges to match brand squircle */
+img[alt="Voca Logo"] {
+  border-radius: 25%;
+  overflow: hidden;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-on-surface);
