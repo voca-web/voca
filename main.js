@@ -26,7 +26,7 @@ const translations = {
     brand_title_short: 'Voca',
     headline: 'Master English<br/>Vocabulary with <span class="text-[var(--color-primary)]">Voca.</span>',
     hero_subheadline: 'An encouraging way to learn, built specifically for English learners.',
-    beta_instructions: 'Voca is currently in its closed testing phase. To join the beta and start learning, please send an email to <a href="mailto:closedbeta@voca.com.tr" class="text-[var(--color-primary)] font-bold hover:underline">closedbeta@voca.com.tr</a> with the email address associated with your Google Play account.',
+
     contact_support: 'Contact Support',
     get_in_touch: 'Get in Touch',
     now_available: 'Now available on Android',
@@ -66,7 +66,7 @@ const translations = {
     brand_title_short: 'Voca',
     headline: '<span class="text-[var(--color-primary)]">Voca</span> ile İngilizcenizi Geliştirin',
     hero_subheadline: 'İngilizce öğrenenler için özenle tasarlanmış, eğlenceli ve sürükleyici bir deneyim için hemen Voca’yı indirin.',
-    beta_instructions: 'Voca şu anda kapalı test aşamasındadır. Beta grubuna katılmak ve öğrenmeye başlamak için, Google Play hesabınıza bağlı e-posta adresinizi <a href="mailto:closedbeta@voca.com.tr" class="text-[var(--color-primary)] font-bold hover:underline">closedbeta@voca.com.tr</a> adresine gönderebilirsiniz.',
+
     contact_support: 'İletişime Geçin',
     get_in_touch: 'Bize Ulaşın',
     now_available: 'Android\'de Yayında',
