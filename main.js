@@ -39,6 +39,7 @@ const translations = {
     feature3_title: 'Detailed Progress Tracking',
     feature3_desc: 'Track your progress daily and stay motivated as you learn.',
     here_to_help: 'We\'re here to help',
+    click_to_copy: 'Click to copy',
     support_email: 'support@voca.com.tr',
     nav_about: 'What is Voca?',
     nav_privacy: 'Privacy Policy',
@@ -77,12 +78,13 @@ const translations = {
     feature2_desc: 'Kelime ezberlemek yerine onları gerçekten öğrenin. Hafıza tekniklerine dayalı sistemimizle kelimeler artık aklınızdan çıkmayacak.',
     feature3_title: 'Detaylı Gelişim Takibi',
     feature3_desc: 'Günlük gelişiminizi takip edin ve öğrenirken motive kalın.',
-    here_to_help: 'Yardımcı olmaktan memnuniyet duyarız',
+    here_to_help: 'Size yardım etmek için buradayız',
+    click_to_copy: 'Kopyalamak için tıklayın',
     support_email: 'destek@voca.com.tr',
     nav_about: 'Voca Nedir?',
     nav_privacy: 'Gizlilik Politikası',
     nav_back_voca: 'Voca\'ya Geri Dön',
-    instagram_message: 'Herhangi bir sorunuz varsa, lütfen bana dm gönderin',
+    instagram_message: 'Herhangi bir sorunuz varsa, bana dm göndermekten çekinmeyin',
     about_title: 'Voca Nedir?',
     about_intro: 'Voca, öğrenme odaklı yol arkadaşınızdır. Günde sadece 10 dakika harcayarak İngilizcenizi kolayca geliştirebilirsiniz.',
     tour_step1_title: 'Voca\'ya Hoş Geldin!',
@@ -122,16 +124,6 @@ function setLanguage(lang) {
       btn.classList.remove('text-[var(--color-primary)]', 'font-bold');
       btn.classList.add('text-slate-400', 'hover:text-slate-600');
     });
-  }
-
-  // Update programmatic mailto links
-  const contactBtn = document.getElementById('contact-btn');
-  if (contactBtn) {
-    contactBtn.href = `mailto:${translations[lang]['support_email']}`;
-  }
-  const emailCard = document.getElementById('email-card');
-  if (emailCard) {
-    emailCard.href = `mailto:${translations[lang]['support_email']}`;
   }
 
   // Apply Translations
@@ -182,6 +174,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   } else {
     document.querySelectorAll('.reveal-up').forEach(el => el.classList.add('active'));
+  }
+
+  // Copy to Clipboard Logic for Email Card
+  const emailCard = document.getElementById('email-card');
+  if (emailCard) {
+    emailCard.addEventListener('click', () => {
+      const emailText = document.getElementById('email-text').textContent.trim();
+      navigator.clipboard.writeText(emailText).then(() => {
+        const emailIcon = document.getElementById('email-icon');
+        const checkIcon = document.getElementById('check-icon');
+        const tooltip = document.getElementById('copy-tooltip');
+        
+        const isTurkish = localStorage.getItem('voca_lang') === 'TR';
+        
+        emailIcon.classList.add('hidden');
+        checkIcon.classList.remove('hidden');
+        tooltip.textContent = isTurkish ? 'Kopyalandı!' : 'Copied!';
+        tooltip.classList.add('text-green-600', 'font-bold');
+        tooltip.classList.remove('text-slate-500');
+        
+        setTimeout(() => {
+          emailIcon.classList.remove('hidden');
+          checkIcon.classList.add('hidden');
+          tooltip.textContent = isTurkish ? 'Kopyalamak için tıklayın' : 'Click to copy';
+          tooltip.classList.remove('text-green-600', 'font-bold');
+          tooltip.classList.add('text-slate-500');
+        }, 2000);
+      });
+    });
   }
 });
 
