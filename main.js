@@ -39,7 +39,6 @@ const translations = {
     feature3_title: 'Detailed Progress Tracking',
     feature3_desc: 'Track your progress daily and stay motivated as you learn.',
     here_to_help: 'We\'re here to help',
-    prefer_email: 'Prefer direct email?',
     support_email: 'support@voca.com.tr',
     nav_about: 'What is Voca?',
     nav_privacy: 'Privacy Policy',
@@ -79,7 +78,6 @@ const translations = {
     feature3_title: 'Detaylı Gelişim Takibi',
     feature3_desc: 'Günlük gelişiminizi takip edin ve öğrenirken motive kalın.',
     here_to_help: 'Yardımcı olmaktan memnuniyet duyarız',
-    prefer_email: 'Doğrudan e-posta ile iletişimi mi tercih edersiniz?',
     support_email: 'destek@voca.com.tr',
     nav_about: 'Voca Nedir?',
     nav_privacy: 'Gizlilik Politikası',
@@ -126,13 +124,23 @@ function setLanguage(lang) {
     });
   }
 
+  // Update programmatic mailto links
+  const contactBtn = document.getElementById('contact-btn');
+  if (contactBtn) {
+    contactBtn.href = `mailto:${translations[lang]['support_email']}`;
+  }
+  const emailCard = document.getElementById('email-card');
+  if (emailCard) {
+    emailCard.href = `mailto:${translations[lang]['support_email']}`;
+  }
+
   // Apply Translations
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (translations[lang] && translations[lang][key]) {
       if (el.tagName === 'IMG') {
         el.src = translations[lang][key];
-      } else if (el.tagName === 'A' && el.hasAttribute('href') && el.getAttribute('href').startsWith('mailto:')) {
+      } else if (el.tagName === 'A' && el.hasAttribute('href') && el.getAttribute('href').startsWith('mailto:') && key === 'support_email') {
         el.href = `mailto:${translations[lang][key]}`;
         el.innerHTML = translations[lang][key];
       } else {
