@@ -29,7 +29,7 @@ const translations = {
 
     contact_support: 'Contact Support',
     get_in_touch: 'Get in Touch',
-    now_available: 'Now available on Android',
+    now_available: 'Now available on iOS & Android',
     key_features_header: 'See Voca in Action',
     features_subheadline: 'Explore features designed to make language learning intuitive, effective, and beautiful.',
     feature1_title: 'Comprehensive Word Library',
@@ -69,7 +69,7 @@ const translations = {
 
     contact_support: 'İletişime Geçin',
     get_in_touch: 'Bize Ulaşın',
-    now_available: 'Android\'de Yayında',
+    now_available: 'iOS ve Android\'de Yayında',
     key_features_header: 'Voca Sizin İçin Neler Yapabilir?',
     features_subheadline: 'Dil öğrenimini etkili ve eğlenceli bir deneyime dönüştürmek için tasarlanmış özelliklerimizi keşfedin.',
     feature1_title: 'Kapsamlı Kelime Kütüphanesi',
