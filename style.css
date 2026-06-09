@@ -542,64 +542,43 @@ img[alt="Voca Logo"] { border-radius: 26%; overflow: hidden; }
 }
 
 /* ============================================================
-   "SEE VOCA IN ACTION" — dark band for contrast
+   "SEE VOCA IN ACTION" — light, same palette as the rest
    ============================================================ */
-.section-dark {
-  position: relative;
-  z-index: 2;
-  background: var(--ink);
-  color: #fff;
-  padding: clamp(5.5rem, 12vh, 10rem) 0;
-  overflow: hidden;
-}
-.section-dark::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(50% 40% at 80% 0%, rgba(139, 92, 246, 0.35), transparent 70%),
-    radial-gradient(45% 40% at 10% 100%, rgba(167, 139, 255, 0.2), transparent 70%);
-  pointer-events: none;
-}
-.section-dark .section-title { color: #fff; }
-.section-dark .section-lead { color: rgba(255,255,255,0.66); }
-.section-dark .eyebrow { color: var(--violet-bright); }
-
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: start;
 }
 .feature-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--paper-card);
+  border: 1px solid var(--line);
   border-radius: 2rem;
   padding: 1.4rem 1.4rem 2rem;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  box-shadow: 0 30px 70px -42px rgba(24, 20, 31, 0.28);
   transition: transform 0.6s var(--ease-out), border-color 0.6s var(--ease-out),
-              background 0.6s var(--ease-out);
+              box-shadow 0.6s var(--ease-out);
   will-change: transform;
 }
 .feature-card:nth-child(2) { transform: translateY(2.5rem); }
-@media (max-width: 860px) {
+@media (max-width: 980px) {
   .feature-card:nth-child(2) { transform: none; }
 }
 .feature-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(167, 139, 255, 0.5);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(167, 139, 255, 0.7);
+  box-shadow: 0 44px 90px -42px rgba(109, 40, 217, 0.35);
 }
 .feature-card:nth-child(2):hover { transform: translateY(calc(2.5rem - 8px)); }
-@media (max-width: 860px) {
+@media (max-width: 980px) {
   .feature-card:nth-child(2):hover { transform: translateY(-8px); }
 }
 .feature-shot {
   border-radius: 1.4rem;
   overflow: hidden;
   margin-bottom: 1.4rem;
-  box-shadow: 0 30px 60px -30px rgba(0,0,0,0.7);
+  box-shadow: 0 26px 50px -30px rgba(24, 20, 31, 0.4);
 }
 .feature-shot img { width: 100%; height: auto; }
 .feature-card h3 {
@@ -608,12 +587,12 @@ img[alt="Voca Logo"] { border-radius: 26%; overflow: hidden; }
   font-size: 1.4rem;
   line-height: 1.15;
   margin: 0 0 0.6rem;
-  color: #fff;
+  color: var(--ink);
 }
 .feature-card p {
   font-size: 0.98rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--ink-soft);
   line-height: 1.55;
   margin: 0;
 }
@@ -855,20 +834,40 @@ img[alt="Voca Logo"] { border-radius: 26%; overflow: hidden; }
   .hero-cta { justify-content: center; }
   .hero h1 { margin-inline: auto; }
   .hero-visual { margin-top: 3rem; }
-  .story-row { grid-template-columns: 1fr; text-align: center; }
-  .story-row:nth-child(even) .story-media { order: 0; }
+
+  /* Consistent stacking: copy first, screenshot second on every row */
+  .story-row { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+  .story-row .story-copy  { order: 1; }
+  .story-row .story-media { order: 2; }
   .story-copy p { margin-inline: auto; }
-  .feature-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+  .story-copy .step-num { margin-bottom: 0.2rem; }
+
+  .feature-grid { grid-template-columns: 1fr; max-width: 380px; margin-inline: auto; }
+}
+
+/* Hide the in-nav "What is Voca?" link before it crowds the bar */
+@media (max-width: 860px) {
+  .hide-mobile { display: none !important; }
 }
 
 @media (max-width: 600px) {
-  .nav-inner { padding: 0.5rem 0.55rem 0.5rem 0.8rem; }
-  .nav-brand { font-size: 1rem; }
-  .nav-brand img { height: 2rem; }
-  .nav-right { gap: 0.7rem; }
-  .btn-primary { padding: 0.6rem 1rem; font-size: 0.8rem; }
-  .store-badge img { height: 50px; }
-  .float-tag { display: none; }
+  :root { --shell: 94vw; }
+  #navbar { padding: 0.75rem 0; }
+  .nav-inner { padding: 0.45rem 0.5rem 0.45rem 0.7rem; }
+  .nav-right { gap: 0.55rem; }
+  .nav-brand { font-size: 1.05rem; gap: 0.5rem; }
+  .nav-brand img { height: 1.9rem; }
+  .lang-btn { padding: 0.35rem 0.3rem; }
+  .btn-primary { padding: 0.55rem 0.9rem; font-size: 0.82rem; }
+  .store-badge img { height: 52px; }
+  .hero-visual .float-tag { display: none; }
+  .hero { padding-top: 7rem; }
+}
+
+/* Very small phones — keep the nav on one tidy line */
+@media (max-width: 380px) {
+  .nav-brand span { display: none; }      /* logo mark only */
+  .btn-primary { padding: 0.5rem 0.8rem; font-size: 0.78rem; }
 }
 
 /* ============================================================
