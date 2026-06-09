@@ -10,263 +10,231 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 </head>
 
-<body
-  class="bg-[var(--color-background)] text-[var(--color-on-surface)] antialiased relative selection:bg-[var(--color-primary-light)] selection:text-[var(--color-primary-dark)] overflow-x-hidden">
+<body>
+  <!-- Grain texture overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Scroll progress bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
 
   <!-- Navigation -->
-  <nav class="fixed top-0 w-full z-50 transition-all duration-300 p-4 md:p-6 pointer-events-none" id="navbar">
-    <div
-      class="pointer-events-auto max-w-7xl mx-auto px-6 py-4 flex justify-between items-center bg-white/70 backdrop-blur-md rounded-3xl shadow-sm transition-all duration-300 border border-white/20">
-      <a href="#" class="text-2xl font-bold tracking-tight text-black flex items-center gap-3">
-        <img src="/logo.png" alt="Voca Logo" class="h-10 w-auto object-contain drop-shadow-sm" />
-        <span data-i18n="brand_title_short" class="md:hidden">Voca</span>
-        <span data-i18n="brand_title" class="hidden md:inline">Voca: English Vocabulary</span>
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <img src="/logo.png" alt="Voca Logo" />
+        <span data-i18n="brand_title_short">Voca</span>
       </a>
-      <div class="flex items-center gap-4 md:gap-6">
-        <!-- About Link -->
-        <a href="#about" data-i18n="nav_about"
-          class="text-sm font-medium text-slate-600 hover:text-[var(--color-primary)] transition-colors hidden md:block">What
-          is Voca?</a>
-        <!-- Language Toggle -->
-        <div class="flex items-center gap-1.5 text-sm font-medium">
-          <button
-            class="lang-btn lang-en text-[var(--color-primary)] font-bold transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">EN</button>
-          <span class="text-slate-300">|</span>
-          <button
-            class="lang-btn lang-tr text-slate-400 hover:text-slate-600 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">TR</button>
+      <div class="nav-right">
+        <a href="#about" data-i18n="nav_about" class="nav-link hide-mobile">What is Voca?</a>
+        <div class="lang-toggle">
+          <button class="lang-btn lang-en is-active">EN</button>
+          <span class="lang-sep">/</span>
+          <button class="lang-btn lang-tr">TR</button>
         </div>
-        <a id="contact-btn" href="#contact" data-i18n="contact_support"
-          class="fab bg-[var(--color-primary)] text-white px-5 py-2.5 md:px-6 md:py-3 rounded-full font-medium hover:bg-[var(--color-primary-dark)] transition-colors inline-flex items-center gap-2 text-sm md:text-base min-h-[44px]">
+        <a id="contact-btn" href="#contact" data-i18n="contact_support" class="btn-primary magnetic">
           Contact Support
         </a>
       </div>
     </div>
   </nav>
 
-  <main class="overflow-x-hidden">
-    <!-- Hero Section -->
-    <section
-      class="min-h-screen pt-40 pb-20 px-6 flex flex-col md:flex-row items-center justify-center max-w-7xl mx-auto gap-16 lg:gap-24 relative overflow-hidden">
-      <!-- Background decorative elements -->
-      <div
-        class="absolute top-1/4 -left-32 w-[30rem] h-[30rem] bg-[var(--color-primary-light)] rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-10">
-      </div>
-      <div
-        class="absolute top-1/3 -right-32 w-[30rem] h-[30rem] bg-[var(--color-secondary-light)] rounded-full mix-blend-multiply filter blur-3xl opacity-50 -z-10">
-      </div>
-
-      <div class="flex-1 text-center md:text-left z-10 flex flex-col items-center md:items-start">
-        <div data-i18n="now_available"
-          class="inline-block px-4 py-1.5 rounded-full bg-[var(--color-primary-light)]/50 text-[var(--color-primary-dark)] font-medium text-sm mb-6 border border-[var(--color-primary-light)]">
-          Now available on iOS & Android
-        </div>
-        <h1 data-i18n="headline"
-          class="text-5xl md:text-6xl lg:text-[5rem] font-bold leading-tight mb-8 tracking-tight reveal-up">
-          Master English<br />Vocabulary with <span class="text-[var(--color-primary)]">Voca.</span>
-        </h1>
-        <p data-i18n="hero_subheadline"
-          class="text-xl md:text-2xl text-slate-600 mb-12 max-w-2xl font-light reveal-up delay-100">
-          An encouraging way to learn, built specifically for English learners.
-        </p>
-        <div
-          class="flex flex-row flex-wrap gap-4 justify-center md:justify-start items-center w-full px-6 md:px-0 reveal-up delay-200">
-          <a href="https://apps.apple.com/us/app/voca-english-vocabulary/id6769339990" target="_blank" rel="noopener noreferrer"
-            class="hover:-translate-y-1 transition-all duration-300 block hover:drop-shadow-[0_10px_20px_var(--color-primary)] min-h-[44px]">
-            <img src="/app-store-badge.svg" alt="Download on the App Store" class="h-[68px] w-auto drop-shadow-md" />
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.can.voca" target="_blank" rel="noopener noreferrer"
-            class="hover:-translate-y-1 transition-all duration-300 block hover:drop-shadow-[0_10px_20px_var(--color-primary)] min-h-[44px]">
-            <img src="/google-play-badge.svg" alt="Get it on Google Play" class="h-[68px] w-auto drop-shadow-md" />
-          </a>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-light" aria-hidden="true"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="hero-eyebrow rise" style="--i:0">
+            <span class="dot"></span>
+            <span data-i18n="now_available">Now available on iOS &amp; Android</span>
+          </div>
+          <h1 data-i18n="headline" class="rise" style="--i:1">
+            Master English<br />Vocabulary with <span>Voca.</span>
+          </h1>
+          <p data-i18n="hero_subheadline" class="hero-sub rise" style="--i:2">
+            An encouraging way to learn, built specifically for English learners.
+          </p>
+          <div class="hero-cta rise" style="--i:3">
+            <a href="https://apps.apple.com/us/app/voca-english-vocabulary/id6769339990" target="_blank"
+              rel="noopener noreferrer" class="store-badge">
+              <img src="/app-store-badge.svg" alt="Download on the App Store" />
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.can.voca" target="_blank"
+              rel="noopener noreferrer" class="store-badge">
+              <img src="/google-play-badge.svg" alt="Get it on Google Play" />
+            </a>
+          </div>
         </div>
 
-      </div>
-
-      <div class="flex-1 flex justify-center z-10 w-full relative">
-        <!-- App Screenshot -->
-        <div class="reveal-up delay-300 w-full flex justify-center">
-          <div
-            class="w-[80%] sm:w-[340px] max-w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-            <img data-i18n="img_hero" src="/hero-app.jpg" alt="Voca App Learning Screen"
-              class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
+        <div class="hero-visual">
+          <div class="float-tag tag-1">
+            <span class="ico">✦</span>
+            <span>10 min a day</span>
+          </div>
+          <div class="phone-parallax" data-parallax data-speed="-0.06">
+            <div class="phone-float">
+              <div class="phone-frame" data-tilt>
+                <img data-i18n="img_hero" src="/hero-app.jpg" alt="Voca App Learning Screen" />
+              </div>
+            </div>
+          </div>
+          <div class="float-tag tag-2">
+            <span class="ico">↑</span>
+            <span>Level up</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- What is Voca Section -->
-    <section id="about"
-      class="py-32 px-6 bg-white relative z-10 rounded-t-[4rem] shadow-[0_-20px_50px_-20px_rgba(0,0,0,0.05)] border-t border-slate-100">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-20">
-          <h2 data-i18n="about_title"
-            class="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 text-black tracking-tight">What is Voca?</h2>
-          <p data-i18n="about_intro" class="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">Improve
-            your English easily by spending just 10 minutes a day. Voca is a simple companion focused solely on
-            learning.</p>
+    <!-- Word marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">Eloquent <span>belagatli</span></span>
+        <span class="marquee-item">Resilient <span>dirençli</span></span>
+        <span class="marquee-item">Vivid <span>canlı</span></span>
+        <span class="marquee-item">Curious <span>meraklı</span></span>
+        <span class="marquee-item">Brilliant <span>parlak</span></span>
+        <span class="marquee-item">Eloquent <span>belagatli</span></span>
+        <span class="marquee-item">Resilient <span>dirençli</span></span>
+        <span class="marquee-item">Vivid <span>canlı</span></span>
+        <span class="marquee-item">Curious <span>meraklı</span></span>
+        <span class="marquee-item">Brilliant <span>parlak</span></span>
+      </div>
+    </div>
+
+    <!-- What is Voca -->
+    <section id="about" class="section">
+      <div class="shell">
+        <div class="section-head center">
+          <span class="eyebrow" data-reveal="up">The idea</span>
+          <h2 data-i18n="about_title" class="section-title" data-reveal="up" data-delay="80">What is Voca?</h2>
+          <p data-i18n="about_intro" class="section-lead" data-reveal="up" data-delay="160">Improve your English easily
+            by spending just 10 minutes a day. Voca is a simple companion focused solely on learning.</p>
         </div>
 
-        <div
-          class="voca-screenshots-carousel grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 justify-items-center">
+        <div class="story">
           <!-- Step 1 -->
-          <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up">
-            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-              <img data-i18n="img_tour1" src="/Screenshot_20260428_183018.png" alt="Voca Tour Step 1"
-                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
+          <div class="story-row">
+            <div class="story-copy" data-reveal="left">
+              <span class="step-num">01</span>
+              <h3 data-i18n="tour_step1_title">Welcome to Voca</h3>
+              <p data-i18n="tour_step1_desc">Master English vocabulary through immersive, level-based practice.</p>
             </div>
-            <h3 data-i18n="tour_step1_title" class="text-xl font-medium text-slate-800 text-center">Welcome to Voca</h3>
-            <p data-i18n="tour_step1_desc" class="screenshot-desc text-center">Master English vocabulary through
-              immersive, level-based practice.</p>
+            <div class="story-media" data-reveal="right">
+              <div class="glow"></div>
+              <div class="shot" data-tilt>
+                <img data-i18n="img_tour1" src="/Screenshot_20260428_183018.png" alt="Voca Tour Step 1" />
+              </div>
+            </div>
           </div>
 
           <!-- Step 2 -->
-          <div
-            class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 md:translate-y-12 reveal-up delay-100">
-            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-              <img data-i18n="img_tour2" src="/Screenshot_20260428_183026.png" alt="Voca Tour Step 2"
-                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
+          <div class="story-row">
+            <div class="story-media" data-reveal="left">
+              <div class="glow"></div>
+              <div class="shot" data-tilt>
+                <img data-i18n="img_tour2" src="/Screenshot_20260428_183026.png" alt="Voca Tour Step 2" />
+              </div>
             </div>
-            <h3 data-i18n="tour_step2_title" class="text-xl font-medium text-slate-800 text-center">Bite-Sized Learning
-            </h3>
-            <p data-i18n="tour_step2_desc" class="screenshot-desc text-center">Learn vocabulary in perfectly sized,
-              manageable chunks.</p>
+            <div class="story-copy" data-reveal="right">
+              <span class="step-num">02</span>
+              <h3 data-i18n="tour_step2_title">Bite-Sized Learning</h3>
+              <p data-i18n="tour_step2_desc">Learn vocabulary in perfectly sized, manageable chunks.</p>
+            </div>
           </div>
 
           <!-- Step 3 -->
-          <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up delay-200">
-            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-              <img data-i18n="img_tour3" src="/Screenshot_20260428_183031.png" alt="Voca Tour Step 3"
-                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
+          <div class="story-row">
+            <div class="story-copy" data-reveal="left">
+              <span class="step-num">03</span>
+              <h3 data-i18n="tour_step3_title">Swipe to Learn</h3>
+              <p data-i18n="tour_step3_desc">Navigate through categories and favorite words for later review.</p>
             </div>
-            <h3 data-i18n="tour_step3_title" class="text-xl font-medium text-slate-800 text-center">Swipe to Learn</h3>
-            <p data-i18n="tour_step3_desc" class="screenshot-desc text-center">Navigate through categories and favorite
-              words for later review.</p>
+            <div class="story-media" data-reveal="right">
+              <div class="glow"></div>
+              <div class="shot" data-tilt>
+                <img data-i18n="img_tour3" src="/Screenshot_20260428_183031.png" alt="Voca Tour Step 3" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- App Gallery -->
-    <section class="py-32 px-6 bg-slate-50/50 relative z-10 border-t border-slate-100">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-20">
-          <h2 data-i18n="key_features_header"
-            class="text-4xl md:text-5xl lg:text-6xl font-medium mb-6 text-slate-800 tracking-tight">See Voca in Action
+    <!-- See Voca in Action -->
+    <section class="section-dark">
+      <div class="shell">
+        <div class="section-head center">
+          <span class="eyebrow" data-reveal="up">Features</span>
+          <h2 data-i18n="key_features_header" class="section-title" data-reveal="up" data-delay="80">See Voca in Action
           </h2>
-          <p data-i18n="features_subheadline" class="text-xl text-slate-600 max-w-2xl mx-auto font-light">Explore
-            features designed to make language learning intuitive, effective, and beautiful.</p>
+          <p data-i18n="features_subheadline" class="section-lead" data-reveal="up" data-delay="160">Explore features
+            designed to make language learning intuitive, effective, and beautiful.</p>
         </div>
 
-        <div
-          class="voca-screenshots-carousel grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 justify-items-center space-y-8 md:space-y-0">
-          <!-- Screenshot 1 -->
-          <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up">
-            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-              <img data-i18n="img_feature1" src="/feature1.jpg" alt="Voca App Feature 1"
-                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
+        <div class="feature-grid">
+          <div class="feature-card" data-reveal="up" data-tilt>
+            <div class="feature-shot">
+              <img data-i18n="img_feature1" src="/feature1.jpg" alt="Voca App Feature 1" />
             </div>
-            <div class="text-center px-2">
-              <h3 data-i18n="feature1_title" class="text-xl font-medium text-slate-800 mb-2">Comprehensive Word Library
-              </h3>
-              <p data-i18n="feature1_desc" class="screenshot-desc text-center">Access thousands of essential English
-                words tailored for your level.</p>
-            </div>
+            <h3 data-i18n="feature1_title">Comprehensive Word Library</h3>
+            <p data-i18n="feature1_desc">Access thousands of essential English words tailored for your level.</p>
           </div>
 
-          <!-- Screenshot 2 -->
-          <div
-            class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 md:translate-y-12 reveal-up delay-100">
-            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-              <img data-i18n="img_feature2" src="/feature2.jpg" alt="Voca App Feature 2"
-                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
+          <div class="feature-card" data-reveal="up" data-delay="120" data-tilt>
+            <div class="feature-shot">
+              <img data-i18n="img_feature2" src="/feature2.jpg" alt="Voca App Feature 2" />
             </div>
-            <div class="text-center px-2">
-              <h3 data-i18n="feature2_title" class="text-xl font-medium text-slate-800 mb-2">Effective and Permanent
-                Learning</h3>
-              <p data-i18n="feature2_desc" class="screenshot-desc text-center">Don't just memorize words, truly learn
-                them. Our memory-based system ensures words stick in your mind.</p>
-            </div>
+            <h3 data-i18n="feature2_title">Effective and Permanent Learning</h3>
+            <p data-i18n="feature2_desc">Don't just memorize words, truly learn them. Our memory-based system ensures
+              words stick in your mind.</p>
           </div>
 
-          <!-- Screenshot 3 -->
-          <div class="w-[80%] md:w-[280px] max-w-full flex flex-col items-center gap-6 reveal-up delay-200">
-            <div class="w-full rounded-[2.5rem] overflow-hidden shadow-xl bg-transparent p-0 hover-lift">
-              <img data-i18n="img_feature3" src="/feature3.jpg" alt="Voca App Feature 3"
-                class="w-full h-auto object-cover rounded-[2.5rem] bg-transparent" />
+          <div class="feature-card" data-reveal="up" data-delay="240" data-tilt>
+            <div class="feature-shot">
+              <img data-i18n="img_feature3" src="/feature3.jpg" alt="Voca App Feature 3" />
             </div>
-            <div class="text-center px-2">
-              <h3 data-i18n="feature3_title" class="text-xl font-medium text-slate-800 mb-2">Detailed Progress Tracking
-              </h3>
-              <p data-i18n="feature3_desc" class="screenshot-desc text-center">Track your progress daily and stay
-                motivated as you learn.</p>
-            </div>
+            <h3 data-i18n="feature3_title">Detailed Progress Tracking</h3>
+            <p data-i18n="feature3_desc">Track your progress daily and stay motivated as you learn.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact"
-      class="py-32 px-6 bg-gradient-to-b from-white to-[var(--color-primary-light)]/20 relative z-0">
-      <div class="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center gap-6">
-        <!-- Top Pill -->
-        <div data-i18n="here_to_help"
-          class="inline-block px-4 py-1.5 rounded-full bg-white text-[var(--color-primary-dark)] font-medium text-sm border border-slate-200 shadow-sm">
-          We're here to help
-        </div>
-        <!-- Main Heading -->
-        <h2 data-i18n="get_in_touch" class="text-4xl md:text-5xl font-medium mb-6 text-slate-800 tracking-tight">
-          Get in Touch
-        </h2>
- 
-        <!-- Email Card (click to copy) -->
-        <div id="email-card"
-          class="bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-10 md:p-16 shadow-2xl hover:shadow-[0_20px_50px_rgba(124,58,237,0.15)] transition-all duration-300 border border-white reveal-up flex flex-col items-center justify-center gap-6 max-w-2xl w-full mx-auto hover:-translate-y-1 group relative overflow-hidden cursor-pointer mb-8">
-          <!-- Decorative corner blobs -->
-          <div
-            class="absolute -top-12 -right-12 w-32 h-32 bg-[var(--color-primary)] rounded-full mix-blend-multiply opacity-20 filter blur-2xl">
-          </div>
-          <div
-            class="absolute -bottom-12 -left-12 w-32 h-32 bg-[var(--color-secondary)] rounded-full mix-blend-multiply opacity-20 filter blur-2xl">
-          </div>
- 
-          <!-- Decorative envelope icon -->
-          <div
-            class="w-20 h-20 bg-[var(--color-primary-light)] text-[var(--color-primary)] rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110">
-            <!-- Mail icon -->
-            <svg id="email-icon" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 transition-all duration-300" fill="none" viewBox="0 0 24 24"
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="shell contact-shell">
+        <div class="pill" data-i18n="here_to_help" data-reveal="up">We're here to help</div>
+        <h2 data-i18n="get_in_touch" class="section-title" data-reveal="up" data-delay="80">Get in Touch</h2>
+
+        <div id="email-card" data-reveal="scale" data-delay="120">
+          <div class="email-ico">
+            <svg id="email-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
               stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <!-- Check icon (hidden by default) -->
-            <svg id="check-icon" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 hidden text-green-600 transition-all duration-300" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7" />
+            <svg id="check-icon" xmlns="http://www.w3.org/2000/svg" class="hidden text-green-600" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <!-- Clickable email display text -->
-          <div class="text-center relative z-10">
-            <div data-i18n="support_email" id="email-text"
-              class="text-2xl sm:text-3xl md:text-4xl text-[var(--color-primary-dark)] font-bold tracking-tight break-all">
-              support@voca.com.tr
-            </div>
-            <div id="copy-tooltip" data-i18n="click_to_copy" class="text-sm text-slate-500 font-medium mt-3 transition-all duration-300 group-hover:text-[var(--color-primary)]">
-              Click to copy
-            </div>
+          <div>
+            <div data-i18n="support_email" id="email-text">support@voca.com.tr</div>
+            <div id="copy-tooltip" data-i18n="click_to_copy">Click to copy</div>
           </div>
         </div>
- 
-        <!-- Footer Text -->
-        <p data-i18n="instagram_message" class="text-slate-600 max-w-md mx-auto text-base md:text-lg">
+
+        <p data-i18n="instagram_message" class="contact-note" data-reveal="up">
           If you have any questions, please feel free to send me a dm
         </p>
-        <!-- Social Button -->
-        <a href="https://www.instagram.com/seyficandikbas/" class="instagram-btn reveal-up" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/seyficandikbas/" class="instagram-btn magnetic" target="_blank"
+          rel="noopener noreferrer" data-reveal="up" data-delay="80">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
             <path
               d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.036 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
@@ -275,33 +243,23 @@
         </a>
       </div>
     </section>
+  </main>
 
-  <footer class="bg-white py-12 text-center text-slate-500 border-t border-slate-100">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-      <a href="#"
-        class="text-xl font-bold tracking-tight text-slate-300 flex items-center gap-2 mb-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-        <img src="/logo.png" alt="Voca Logo" class="h-8 w-auto object-contain drop-shadow-sm" />
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a href="#" class="footer-brand">
+        <img src="/logo.png" alt="Voca Logo" />
         Voca
       </a>
-      <!-- Nav Links -->
-      <div class="flex items-center gap-6 mb-6">
-        <a href="#about" data-i18n="nav_about"
-          class="text-sm font-medium text-slate-500 hover:text-[var(--color-primary)] transition-colors">What is
-          Voca?</a>
-        <a href="/privacypolicy/" data-i18n="nav_privacy"
-          class="text-sm font-medium text-slate-500 hover:text-[var(--color-primary)] transition-colors">Privacy
-          Policy</a>
+      <div class="footer-nav">
+        <a href="#about" data-i18n="nav_about" class="nav-link">What is Voca?</a>
+        <a href="/privacypolicy/" data-i18n="nav_privacy" class="nav-link">Privacy Policy</a>
       </div>
-
-      <!-- Language Toggle -->
-      <div class="flex items-center gap-2 text-sm font-medium mb-6">
-        <button
-          class="lang-btn lang-en text-[var(--color-primary)] font-bold transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">EN</button>
-        <span class="text-slate-300">|</span>
-        <button
-          class="lang-btn lang-tr text-slate-400 hover:text-slate-600 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center">TR</button>
+      <div class="lang-toggle">
+        <button class="lang-btn lang-en is-active">EN</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn lang-tr">TR</button>
       </div>
-
       <div class="footer-credits">
         <p>&copy; <span id="year"></span> Seyfi Can Dikbaş. All rights reserved.</p>
         <p>Built for English <span class="highlight-red">lovers</span></p>

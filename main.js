@@ -1,22 +1,35 @@
 import './style.css'
 
-// Add scroll effect to navbar
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ============================================================
+   NAVBAR — condense on scroll + scroll progress bar
+   ============================================================ */
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
-    navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-    navbar.firstElementChild.classList.remove('md:bg-transparent', 'md:shadow-none');
-    navbar.firstElementChild.classList.add('md:bg-white/90', 'md:shadow-sm');
-  } else {
-    navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-    navbar.firstElementChild.classList.add('md:bg-transparent', 'md:shadow-none');
-    navbar.firstElementChild.classList.remove('md:bg-white/90', 'md:shadow-sm');
+const progress = document.getElementById('scroll-progress');
+
+let ticking = false;
+function onScroll() {
+  const y = window.scrollY;
+  if (navbar) navbar.classList.toggle('scrolled', y > 24);
+  if (progress) {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = max > 0 ? Math.min(y / max, 1) : 0;
+    progress.style.transform = `scaleX(${ratio})`;
   }
-});
+  ticking = false;
+}
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(onScroll);
+    ticking = true;
+  }
+}, { passive: true });
+onScroll();
 
-document.documentElement.classList.add('js-active');
-
-// Language Toggle Logic
+/* ============================================================
+   LANGUAGE TOGGLE + i18n  (logic preserved)
+   ============================================================ */
 const langEnBtns = document.querySelectorAll('.lang-en');
 const langTrBtns = document.querySelectorAll('.lang-tr');
 
@@ -106,27 +119,9 @@ const translations = {
 function setLanguage(lang) {
   localStorage.setItem('voca_lang', lang);
 
-  if (lang === 'EN') {
-    langEnBtns.forEach(btn => {
-      btn.classList.add('text-[var(--color-primary)]', 'font-bold');
-      btn.classList.remove('text-slate-400', 'hover:text-slate-600');
-    });
-    langTrBtns.forEach(btn => {
-      btn.classList.remove('text-[var(--color-primary)]', 'font-bold');
-      btn.classList.add('text-slate-400', 'hover:text-slate-600');
-    });
-  } else {
-    langTrBtns.forEach(btn => {
-      btn.classList.add('text-[var(--color-primary)]', 'font-bold');
-      btn.classList.remove('text-slate-400', 'hover:text-slate-600');
-    });
-    langEnBtns.forEach(btn => {
-      btn.classList.remove('text-[var(--color-primary)]', 'font-bold');
-      btn.classList.add('text-slate-400', 'hover:text-slate-600');
-    });
-  }
+  langEnBtns.forEach(btn => btn.classList.toggle('is-active', lang === 'EN'));
+  langTrBtns.forEach(btn => btn.classList.toggle('is-active', lang === 'TR'));
 
-  // Apply Translations
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (translations[lang] && translations[lang][key]) {
@@ -145,65 +140,141 @@ function setLanguage(lang) {
 langEnBtns.forEach(btn => btn.addEventListener('click', () => setLanguage('EN')));
 langTrBtns.forEach(btn => btn.addEventListener('click', () => setLanguage('TR')));
 
-// Initialize language from localStorage
 const savedLang = localStorage.getItem('voca_lang') || 'EN';
 setLanguage(savedLang);
 
-// Scroll Reveal Logic
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-const observerOptions = {
-  root: null,
-  rootMargin: window.innerWidth < 768 ? '0px 0px -10% 0px' : '0px 0px -20% 0px',
-  threshold: 0
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (!prefersReducedMotion) {
-    document.querySelectorAll('.reveal-up').forEach(el => {
-      observer.observe(el);
-    });
-  } else {
-    document.querySelectorAll('.reveal-up').forEach(el => el.classList.add('active'));
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+function initReveal() {
+  const items = document.querySelectorAll('[data-reveal]');
+  if (prefersReducedMotion) {
+    items.forEach(el => el.classList.add('is-in'));
+    return;
   }
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.getAttribute('data-delay');
+        if (delay) entry.target.style.transitionDelay = `${delay}ms`;
+        entry.target.classList.add('is-in');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+  items.forEach(el => io.observe(el));
+}
 
-  // Copy to Clipboard Logic for Email Card
-  const emailCard = document.getElementById('email-card');
-  if (emailCard) {
-    emailCard.addEventListener('click', () => {
-      const emailText = document.getElementById('email-text').textContent.trim();
-      navigator.clipboard.writeText(emailText).then(() => {
-        const emailIcon = document.getElementById('email-icon');
-        const checkIcon = document.getElementById('check-icon');
-        const tooltip = document.getElementById('copy-tooltip');
-        
-        const isTurkish = localStorage.getItem('voca_lang') === 'TR';
-        
-        emailIcon.classList.add('hidden');
-        checkIcon.classList.remove('hidden');
-        tooltip.textContent = isTurkish ? 'Kopyalandı!' : 'Copied!';
-        tooltip.classList.add('text-green-600', 'font-bold');
-        tooltip.classList.remove('text-slate-500');
-        
-        setTimeout(() => {
-          emailIcon.classList.remove('hidden');
-          checkIcon.classList.add('hidden');
-          tooltip.textContent = isTurkish ? 'Kopyalamak için tıklayın' : 'Click to copy';
-          tooltip.classList.remove('text-green-600', 'font-bold');
-          tooltip.classList.add('text-slate-500');
-        }, 2000);
+/* ============================================================
+   PARALLAX (scroll-driven)
+   ============================================================ */
+function initParallax() {
+  if (prefersReducedMotion) return;
+  const layers = [...document.querySelectorAll('[data-parallax]')];
+  if (!layers.length) return;
+  let raf = false;
+  function update() {
+    const vh = window.innerHeight;
+    layers.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const offset = (center - vh / 2) / vh;
+      const speed = parseFloat(el.getAttribute('data-speed')) || -0.08;
+      el.style.transform = `translate3d(0, ${offset * speed * 100}px, 0)`;
+    });
+    raf = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!raf) { requestAnimationFrame(update); raf = true; }
+  }, { passive: true });
+  update();
+}
+
+/* ============================================================
+   POINTER TILT (3D)
+   ============================================================ */
+function initTilt() {
+  if (prefersReducedMotion || !window.matchMedia('(hover: hover)').matches) return;
+  document.querySelectorAll('[data-tilt]').forEach(el => {
+    const max = 9;
+    let frame;
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        el.style.transform = `perspective(900px) rotateY(${px * max}deg) rotateX(${-py * max}deg) translateZ(0)`;
       });
     });
-  }
-});
+    el.addEventListener('pointerleave', () => {
+      cancelAnimationFrame(frame);
+      el.style.transform = '';
+    });
+  });
+}
 
+/* ============================================================
+   MAGNETIC BUTTONS
+   ============================================================ */
+function initMagnetic() {
+  if (prefersReducedMotion || !window.matchMedia('(hover: hover)').matches) return;
+  document.querySelectorAll('.magnetic').forEach(el => {
+    const strength = 0.3;
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * strength;
+      const y = (e.clientY - r.top - r.height / 2) * strength;
+      el.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+  });
+}
 
+/* ============================================================
+   EMAIL CARD — copy to clipboard (logic preserved)
+   ============================================================ */
+function initEmailCopy() {
+  const emailCard = document.getElementById('email-card');
+  if (!emailCard) return;
+  emailCard.addEventListener('click', () => {
+    const emailText = document.getElementById('email-text').textContent.trim();
+    navigator.clipboard.writeText(emailText).then(() => {
+      const emailIcon = document.getElementById('email-icon');
+      const checkIcon = document.getElementById('check-icon');
+      const tooltip = document.getElementById('copy-tooltip');
+      const isTurkish = localStorage.getItem('voca_lang') === 'TR';
+
+      emailIcon.classList.add('hidden');
+      checkIcon.classList.remove('hidden');
+      tooltip.textContent = isTurkish ? 'Kopyalandı!' : 'Copied!';
+      tooltip.classList.add('text-green-600');
+
+      setTimeout(() => {
+        emailIcon.classList.remove('hidden');
+        checkIcon.classList.add('hidden');
+        tooltip.textContent = isTurkish ? 'Kopyalamak için tıklayın' : 'Click to copy';
+        tooltip.classList.remove('text-green-600');
+      }, 2000);
+    });
+  });
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+function init() {
+  initReveal();
+  initParallax();
+  initTilt();
+  initMagnetic();
+  initEmailCopy();
+  // Trigger hero entrance on next frame
+  requestAnimationFrame(() => document.body.classList.add('hero-ready'));
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
